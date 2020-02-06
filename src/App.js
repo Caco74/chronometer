@@ -18,7 +18,7 @@ class App extends Component {
     this.setState((prevState) => ({
       milisegundos: (prevState.milisegundos + 10)
     }))
-    if (this.state.milisegundos === 60) {
+    if (this.state.milisegundos === 1000) {
       this.setState((prevState) => ({
         milisegundos: 0,
         segundos: prevState.segundos + 1
@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.chronometer(),1000)
+    this.interval = setInterval(() => this.chronometer(),10)
   }
 
 
@@ -52,15 +52,15 @@ class App extends Component {
     render() {
       return(
       <div className='border border-secondary m-3 p-3'>
-        <p className='font-weight'>Cronómetro: </p>
-        <div className='border border-secondary m-3 p-3'>
-          <div>{this.state.horas}</div>
-          <div>:</div>
-          <div>{this.state.minutos}</div>
-          <div>:</div>
-          <div>{this.state.segundos}</div>
-          <div>:</div>
-          <div>{this.state.milisegundos}</div>
+        <p className='col-sm-12 text-center h3'>Cronómetro</p>
+        <div className='row h1 text-center m-0 p-0 border border-danger rounded my-3'>
+          <div className='col-sm-2' id='horas'>{this.state.horas}</div>
+          <div className='col-sm-1'>:</div>
+          <div className='col-sm-2'>{this.state.minutos}</div>
+          <div className='col-sm-1'>:</div>
+          <div className='col-sm-2'>{this.state.segundos}</div>
+          <div className='col-sm-1'>:</div>
+          <div className='col-sm-2'>{this.state.milisegundos}</div>
         </div>
       </div>
       );
